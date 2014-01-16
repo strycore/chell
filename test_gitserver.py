@@ -36,5 +36,12 @@ class TestGitServer(unittest.TestCase):
         self.assertEqual(keys_stat.st_uid, git_user.pw_uid)
         self.assertEqual(keys_stat.st_gid, git_user.pw_gid)
 
+    def test_git_repo_has_create_command(self):
+        commands_dir = os.path.join(GIT_REPO_ROOT, 'git-shell-commands')
+        self.assertTrue(os.path.exists(commands_dir))
+
+        create_command = os.path.join(commands_dir, 'create')
+        self.assertTrue(os.path.exists(create_command))
+
 if __name__ == '__main__':
     unittest.main()
